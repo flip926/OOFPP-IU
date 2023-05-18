@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/style.css" />
+    <title>Main page</title>
+  </head>
+  <body>
+    <h1>
+      Some pre defined habits have been already added feel free to delete them
+      if you wish
+    </h1>
+    <h1>You add habits here:</h1>
+    <form action="/add" method=["POST"]>
+      <label>Habit Name</label>
+      <input type="text" name="name" placeholder="Enter habit name" />
+      <label for="periodicity">Periodicity</label>
+      <select name="periodicity" id="periodicity">
+        <option value="daily">Daily</option>
+        <option value="weekly">Weekly</option>
+      </select>
+      <button type="submit">Add</button>
+    </form>
+  </body>
+</html>
