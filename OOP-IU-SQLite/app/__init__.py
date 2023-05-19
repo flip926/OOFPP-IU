@@ -10,10 +10,10 @@ def create_app():
     app = Flask(__name__)
 
     app.config['SECRET_KEY'] = 'mysecretkey'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
 
     db.init_app(app)
-    db.init_app(app.db)
+    migrate.init_app(app,db)
     
     from . import models
     return app
