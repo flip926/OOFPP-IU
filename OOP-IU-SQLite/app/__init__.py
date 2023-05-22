@@ -1,19 +1,24 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
+from .extensions import db,migrate
+from os import environ
 
-db = SQLAlchemy()
-migrate = Migrate()
+
+
+def get_settings():
+    return environ.get('SETTINGS')
 
 def create_app():
 
     app = Flask(__name__)
 
-    app.config['SECRET_KEY'] = 'mysecretkey'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
+    app.config.from_object(get_settings())
+
 
     db.init_app(app)
     migrate.init_app(app,db)
+
+    from .habit import habit
+    app.register_blueprint(habit,url_prefix='/')
     
     from . import models
     return app
