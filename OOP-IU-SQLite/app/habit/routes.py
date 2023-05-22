@@ -2,7 +2,7 @@ from . import habit
 from flask import redirect, render_template, request
 
 
-@habit.route('/',methods=(['GET']))
+@habit.route('/')
 def index():
     return render_template("index.html")
 @habit.route('/analyse')
