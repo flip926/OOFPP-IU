@@ -1,7 +1,6 @@
 from flask import Flask
-from .extensions import db,migrate
+from .extension import db,migrate
 from os import environ
-
 
 
 def get_settings():
